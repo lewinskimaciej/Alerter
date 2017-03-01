@@ -414,6 +414,7 @@ public class Alert extends FrameLayout implements View.OnClickListener, Animatio
 
     /**
      * Set the alert image view to be round
+     *
      * @param rounded True to be round, false to be regular
      */
     public void setRounded(boolean rounded) {
@@ -426,5 +427,15 @@ public class Alert extends FrameLayout implements View.OnClickListener, Animatio
                 ivIcon.setCornerRadius(0);
             }
         }
+    }
+
+    /**
+     * Set the alert text color
+     *
+     * @param textColor The color's resource id
+     */
+    public void setTextColor(int textColor) {
+        tvText.setTextColor(textColor);
+        tvTitle.setTextColor(textColor);
     }
 }

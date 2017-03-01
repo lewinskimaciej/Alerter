@@ -197,6 +197,7 @@ public final class Alerter {
 
     /**
      * Set the Alert's Icon Round, false by default
+     *
      * @param value True to be round, false to be regular
      * @return This Alerter
      */
@@ -218,6 +219,19 @@ public final class Alerter {
             getAlert().setIcon(iconId);
         }
 
+        return this;
+    }
+
+    /**
+     * Set Alert's text color
+     *
+     * @param colorId The color's resource id
+     * @return This Alerter
+     */
+    public Alerter setTextColor(@ColorRes final int colorId) {
+        if (getAlert() != null) {
+            getAlert().setTextColor(colorId);
+        }
         return this;
     }
 
