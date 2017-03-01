@@ -1,13 +1,11 @@
 package com.tapadoo.alerter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -21,6 +19,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.tapadoo.android.R;
 
 /**
@@ -42,7 +42,7 @@ public class Alert extends FrameLayout implements View.OnClickListener, Animatio
     private FrameLayout flBackground;
     private TextView tvTitle;
     private TextView tvText;
-    private ImageView ivIcon;
+    private RoundedImageView ivIcon;
 
     private Animation slideInAnimation;
     private Animation slideOutAnimation;
@@ -52,7 +52,7 @@ public class Alert extends FrameLayout implements View.OnClickListener, Animatio
 
     private long duration = DISPLAY_TIME_IN_SECONDS;
 
-    private boolean enableIconPulse = true;
+    private boolean enableIconPulse = false;
     private boolean enableInfiniteDuration;
 
     /**
@@ -101,7 +101,7 @@ public class Alert extends FrameLayout implements View.OnClickListener, Animatio
         setHapticFeedbackEnabled(true);
 
         flBackground = (FrameLayout) findViewById(R.id.flAlertBackground);
-        ivIcon = (ImageView) findViewById(R.id.ivIcon);
+        ivIcon = (RoundedImageView) findViewById(R.id.ivIcon);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvText = (TextView) findViewById(R.id.tvText);
 
@@ -337,8 +337,25 @@ public class Alert extends FrameLayout implements View.OnClickListener, Animatio
      * @param iconId Drawable resource id of the icon to use in the Alert
      */
     public void setIcon(@DrawableRes final int iconId) {
-        final Drawable iconDrawable = ContextCompat.getDrawable(getContext(), iconId);
-        ivIcon.setImageDrawable(iconDrawable);
+//        old code
+//        final Drawable iconDrawable = ContextCompat.getDrawable(getContext(), iconId);
+//        ivIcon.setImageDrawable(iconDrawable);
+        Glide.with(ivIcon.getContext())
+                .load(iconId)
+                .dontAnimate()
+                .into(ivIcon);
+    }
+
+    /**
+     * Set the inline icon for the Alert
+     *
+     * @param iconUrl Icon url to use in the Alert
+     */
+    public void setIcon(final String iconUrl) {
+        Glide.with(ivIcon.getContext())
+                .load(iconUrl)
+                .dontAnimate()
+                .into(ivIcon);
     }
 
     /**
@@ -393,5 +410,21 @@ public class Alert extends FrameLayout implements View.OnClickListener, Animatio
      */
     public void setOnHideListener(@NonNull final OnHideAlertListener listener) {
         this.onHideListener = listener;
+    }
+
+    /**
+     * Set the alert image view to be round
+     * @param rounded True to be round, false to be regular
+     */
+    public void setRounded(boolean rounded) {
+        if (rounded) {
+            if (ivIcon != null) {
+                ivIcon.setCornerRadius(120);
+            }
+        } else {
+            if (ivIcon != null) {
+                ivIcon.setCornerRadius(0);
+            }
+        }
     }
 }

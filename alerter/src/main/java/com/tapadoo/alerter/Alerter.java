@@ -184,6 +184,32 @@ public final class Alerter {
     /**
      * Set the Alert's Icon
      *
+     * @param url The Image's URL
+     * @return This Alerter
+     */
+    public Alerter setIcon(final String url) {
+        if (getAlert() != null) {
+            getAlert().setIcon(url);
+        }
+
+        return this;
+    }
+
+    /**
+     * Set the Alert's Icon Round, false by default
+     * @param value True to be round, false to be regular
+     * @return This Alerter
+     */
+    public Alerter setRounded(boolean value) {
+        if (getAlert() != null) {
+            getAlert().setRounded(value);
+        }
+        return this;
+    }
+
+    /**
+     * Set the Alert's Icon
+     *
      * @param iconId The Drawable's Resource Idw
      * @return This Alerter
      */
