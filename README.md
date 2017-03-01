@@ -27,6 +27,17 @@ Added methods:
     public Alerter setRounded(boolean value)
 ```
 
+```java
+/**
+     * Set Alert's text color
+     *
+     * @param colorId The color's resource id
+     * @return This Alerter
+     */
+    public Alerter setTextColor(@ColorRes final int colorId)
+```
+
+
 Additional changes:
 
 Set pulsing to false by default
