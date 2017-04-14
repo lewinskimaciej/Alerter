@@ -34,3 +34,11 @@ Set pulsing to false by default
 ```java
 private boolean enableIconPulse = false;
 ```
+
+
+How to install:
+```java
+dependencies {
+	        compile 'com.github.lewinskimaciej:Alerter:1.0.4'
+	}
+```
