@@ -112,7 +112,6 @@ dependencies {
     compile rootProject.ext.libs.appcompat_v7
     compile rootProject.ext.libs.support_annotations
 
-    compile rootProject.ext.libs.rounded_image_view
     compile rootProject.ext.libs.glide
 
     // Local Unit Tests - in src/test

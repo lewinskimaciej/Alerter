@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.makeramen.roundedimageview.RoundedImageView;
 import com.tapadoo.android.R;
 
 /**
@@ -42,7 +41,7 @@ public class Alert extends FrameLayout implements View.OnClickListener, Animatio
     private FrameLayout flBackground;
     private TextView tvTitle;
     private TextView tvText;
-    private RoundedImageView ivIcon;
+    private ImageView ivIcon;
 
     private Animation slideInAnimation;
     private Animation slideOutAnimation;
@@ -101,7 +100,7 @@ public class Alert extends FrameLayout implements View.OnClickListener, Animatio
         setHapticFeedbackEnabled(true);
 
         flBackground = (FrameLayout) findViewById(R.id.flAlertBackground);
-        ivIcon = (RoundedImageView) findViewById(R.id.ivIcon);
+        ivIcon = (ImageView) findViewById(R.id.ivIcon);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvText = (TextView) findViewById(R.id.tvText);
 
@@ -410,23 +409,6 @@ public class Alert extends FrameLayout implements View.OnClickListener, Animatio
      */
     public void setOnHideListener(@NonNull final OnHideAlertListener listener) {
         this.onHideListener = listener;
-    }
-
-    /**
-     * Set the alert image view to be round
-     *
-     * @param rounded True to be round, false to be regular
-     */
-    public void setRounded(boolean rounded) {
-        if (rounded) {
-            if (ivIcon != null) {
-                ivIcon.setCornerRadius(120);
-            }
-        } else {
-            if (ivIcon != null) {
-                ivIcon.setCornerRadius(0);
-            }
-        }
     }
 
     /**

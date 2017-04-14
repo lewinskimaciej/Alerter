@@ -196,19 +196,6 @@ public final class Alerter {
     }
 
     /**
-     * Set the Alert's Icon Round, false by default
-     *
-     * @param value True to be round, false to be regular
-     * @return This Alerter
-     */
-    public Alerter setRounded(boolean value) {
-        if (getAlert() != null) {
-            getAlert().setRounded(value);
-        }
-        return this;
-    }
-
-    /**
      * Set the Alert's Icon
      *
      * @param iconId The Drawable's Resource Idw

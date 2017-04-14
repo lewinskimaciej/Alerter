@@ -18,7 +18,7 @@
         android:clipToPadding="false"
         android:padding="@dimen/alerter_activity_horizontal_margin">
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <ImageView
             android:id="@+id/ivIcon"
             android:layout_width="@dimen/alerter_alert_icn_size"
             android:layout_height="@dimen/alerter_alert_icn_size"
